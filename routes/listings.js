@@ -7,12 +7,13 @@ const controllerListing=require("../controller/listing.js");
 const multer=require("multer");
 const {storage}=require("../cloudinary.js");
 const upload=multer({storage});
-
-router.route("/")
+router.route("")
 //index route
-.get(wrapAsync(controllerListing.index))
+.get(wrapAsync(controllerListing.index));
+router.route("/")
 // new list add router
-.post(validateListing,upload.single("listing[image]"),wrapAsync(controllerListing.newListingPost))
+.post(validateListing,upload.single("listing[image]"),wrapAsync(controllerListing.newListingPost));
+
 
 // new route created
  router.get("/new",isLoggedIn,controllerListing.newListingRenderForm)
