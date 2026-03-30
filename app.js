@@ -27,8 +27,6 @@ app.use(methodoverride("_method"));
 app.use(express.static(path.join(__dirname,"/public")))
 app.use(express.urlencoded({extended:true}))
 const dbUrl=process.env.ATLASDB_URL;
-console.log("dbUrl start =", dbUrl);
-console.log("type =", typeof dbUrl);
 async function main(){
     await mongoose.connect(dbUrl);
 };
