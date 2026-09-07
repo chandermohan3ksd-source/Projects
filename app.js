@@ -27,6 +27,7 @@ app.use(methodoverride("_method"));
 app.use(express.static(path.join(__dirname,"/public")))
 app.use(express.urlencoded({extended:true}))
 const dbUrl=process.env.ATLASDB_URL;
+const port = process.env.PORT || 8080;
 async function main(){
     await mongoose.connect(dbUrl);
 };
@@ -85,6 +86,6 @@ app.set("views",path.join(__dirname,"/views"));
     let{statusCode=500,message="something some wrong"}=err;
     res.render("error.ejs",{message});
  });
- app.listen(8080,()=>{
+ app.listen(port,()=>{
     console.log("server is listing on port number 8080");
 });
